@@ -1,0 +1,154 @@
+/* Configurações Básicas */
+:root {
+    --primary-color: #007bff; /* Azul vibrante */
+    --secondary-color: #f8f9fa; /* Cinza claro */
+    --text-color: #343a40; /* Cinza escuro */
+    --accent-color: #28a745; /* Verde para destaque */
+    --font-family: 'Poppins', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: #fff;
+}
+
+/* Cabeçalho (Header) */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+nav button {
+    background: none;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+nav button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+/* Conteúdo Principal (Main) */
+main {
+    padding: 40px 5%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.content-section {
+    padding: 30px 0;
+    border-bottom: 1px solid #eee;
+    display: none; /* Inicialmente escondido pelo JS */
+    animation: fadeIn 0.8s;
+}
+
+.content-section.active {
+    display: block; /* Mostrado pelo JS */
+}
+
+/* Títulos e Blocos */
+h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--accent-color);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+blockquote {
+    border-left: 5px solid var(--accent-color);
+    padding: 10px 20px;
+    margin: 20px 0;
+    background-color: var(--secondary-color);
+    font-style: italic;
+}
+
+/* Cards de Oficinas */
+.oficina-card {
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.oficina-card h3 {
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.oficina-card ul {
+    list-style: disc;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+/* Formulário (iframe) */
+.form-container {
+    margin-top: 20px;
+    border: 1px solid #ccc; /* Dá um destaque visual ao formulário */
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+iframe {
+    border: none;
+}
+
+/* Rodapé (Footer) */
+footer {
+    background-color: var(--text-color);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+    }
+    nav {
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    nav button {
+        margin: 5px;
+    }
+}
+
+/* Animação para troca de seção */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
