@@ -39,9 +39,13 @@ header {
     font-weight: 600;
 }
 
-figcaption{
-    padding: 20px;
+.vid video{
+    display: flex;
+    flex-wrap: nowrap;
+      width: 368px;
+    height: 345px;
 }
+
 nav button {
     background: none;
     border: none;
@@ -79,18 +83,17 @@ main {
 /* Galeria de Fotos */
 .galeria-container {
     margin-top: 20px;
-    display: flex;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* Ajuste: Mantenha flex para permitir a mudança para coluna */
+    display: flex; 
+    flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
     gap: 15px;
 }
 
 .galeria-container img {
-    width: 100%;
-    height: 500px;
-    display: grid;
-    flex-wrap: nowrap;
-    justify-content: center;
-    justify-items: center;
+    /* Ajuste: 100% de largura para ocupar o máximo espaço disponível */
+    width: 100%; 
+    /* Ajuste: Altura menor e padronizada para dispositivos móveis */
+    height: 300px; 
     object-fit: cover;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -145,10 +148,15 @@ blockquote {
     border: 1px solid #ccc; /* Dá um destaque visual ao formulário */
     border-radius: 5px;
     overflow: hidden;
+    /* Adiciona padding interno para a tela não grudar no iframe */
+    padding: 5px; 
 }
 
+/* **Ajuste para iframe ser 100% responsivo** */
 iframe {
     border: none;
+    width: 100%; 
+    min-height: 100vh; /* Garante que o iframe tenha altura suficiente, você pode ajustar 100vh para um valor fixo se preferir. */
 }
 
 /* Rodapé (Footer) */
@@ -160,8 +168,36 @@ footer {
     margin-top: 40px;
 }
 
-/* Responsividade para telas menores */
-@media (max-width: 600px) {
+/* Animação para troca de seção */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Ajuste padrão para imagens nos cards (não na galeria) */
+.oficina-card img {
+    /* Ajuste: Imagens dos cards ocupam 100% da largura do card */
+    width: 100%; 
+    height: auto; /* Altura automática para manter proporção */
+    margin: 15px 0;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+/* **Ajuste para o vídeo ser 100% responsivo** */
+/* O seletor 'video' afetará apenas o vídeo dentro da seção 'sobre' */
+video {
+    max-width: 100%; 
+    height: auto; /* Impede que o vídeo extrapole a largura do contêiner */
+    display: block;
+    margin: 20px 0;
+}
+
+
+/* Responsividade para telas menores (Media Query) */
+/* A media query existente já faz um bom trabalho, vamos complementá-la */
+@media (max-width: 768px) {
+    /* Navegação em Coluna */
     header {
         flex-direction: column;
     }
@@ -173,16 +209,26 @@ footer {
     }
     nav button {
         margin: 5px;
+        flex-grow: 1; /* Faz com que os botões se estiquem um pouco para ocupar melhor a linha */
+        text-align: center;
     }
-}
-
-/* Animação para troca de seção */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-img{
-    width: 350px;
-    height: 200px;
+    
+    /* Galeria de Fotos em coluna */
+    .galeria-container {
+        flex-direction: column; /* Empilha as imagens verticalmente */
+    }
+    
+    .galeria-container img {
+        height: 250px; /* Altura um pouco menor para economizar espaço em telas muito pequenas */
+    }
+    
+    /* Ajuste do padding principal */
+    main {
+        padding: 20px 4%;
+    }
+    
+    /* Outros elementos */
+    blockquote {
+        margin: 15px 0;
+    }
 }
